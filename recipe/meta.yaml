@@ -28,8 +28,9 @@ requirements:
   host:
     - libxc-c >=7,<8
     - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
+    - cuda-cudart-dev                           # [cuda_compiler_version != "None"]
   run:
-    - cuda-cudart  # [cuda_compiler_version != "None"]
+    - ${{ pin_compatible('cuda-cudart', lower_bound='x', upper_bound='x') }}  # [cuda_compiler_version != "None"]
 
 test:
   commands:
