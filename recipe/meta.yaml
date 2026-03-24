@@ -30,7 +30,7 @@ requirements:
     - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
     - cuda-cudart-dev                           # [cuda_compiler_version != "None"]
   run:
-    - ${{ pin_compatible('cuda-cudart', lower_bound='x', upper_bound='x') }}  # [cuda_compiler_version != "None"]
+    - {{ pin_compatible('cuda-cudart', lower_bound='x', upper_bound='x') }}  # [cuda_compiler_version != "None"]
 
 test:
   commands:
