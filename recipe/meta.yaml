@@ -9,6 +9,7 @@ source:
   url: https://github.com/wavefunction91/ExchCXX/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 0ea38aab563ea5d11a03d80dc1bf909821091d903eb852c5cb350484753a847a
   patches:
+    # revisit 0001 when Libxc hits v7.2
     - 0001-loosen-exact-libxc-detection.patch
 
 build:

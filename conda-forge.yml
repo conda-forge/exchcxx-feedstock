@@ -7,12 +7,13 @@ conda_forge_output_validation: true
 provider:
   linux_aarch64: default
   linux_ppc64le: default
+  osx_arm64: default
 build_platform:
-  osx_arm64: osx_64
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
 test: native_and_emulated
+workflow_settings:
+  free_disk_space: 'quick'
 azure:
-  free_disk_space: true
   settings_linux:
     swapfile_size: 10GiB
