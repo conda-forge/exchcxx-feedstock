@@ -20,8 +20,6 @@ build:
     - {{ pin_subpackage(name, max_pin='x.x') }} cpu_*  # [cuda_compiler_version == "None"]
   string: cuda{{ cuda_compiler_version | replace('.', '') }}_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version != "None"]
   string: cpu_h{{ PKG_HASH }}_{{ PKG_BUILDNUM }}  # [cuda_compiler_version == "None"]
-  ignore_run_exports:
-    - libxc-c
 
 requirements:
   build:
