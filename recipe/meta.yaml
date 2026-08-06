@@ -8,9 +8,12 @@ package:
 source:
   url: https://github.com/wavefunction91/ExchCXX/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 0ea38aab563ea5d11a03d80dc1bf909821091d903eb852c5cb350484753a847a
+  patches:
+    # revisit 0001 when Libxc hits v7.2
+    - 0001-loosen-exact-libxc-detection.patch
 
 build:
-  number: 3
+  number: 4
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }} cuda{{ cuda_compiler_version | replace('.', '') }}_*  # [cuda_compiler_version != "None"]
@@ -33,6 +36,7 @@ requirements:
   run:
     - cuda-cudart  # [cuda_compiler_version != "None"]
     - __cuda       # [cuda_compiler_version != "None"]
+    - {{ pin_compatible('libxc-c', max_pin='x.x') }}
 
 
 test:
@@ -40,6 +44,7 @@ test:
     - test -f $PREFIX/lib/libexchcxx$SHLIB_EXT  # [unix]
     - test -f $PREFIX/include/exchcxx/xc_kernel.hpp  # [unix]
     - test -f $PREFIX/lib/cmake/ExchCXX/ExchCXXConfig.cmake  # [unix]
+    - cat $PREFIX/lib/cmake/ExchCXX/ExchCXXConfig.cmake  # [unix]
 
 about:
   home: https://github.com/wavefunction91/exchcxx

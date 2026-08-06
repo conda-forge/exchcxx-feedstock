@@ -1,0 +1,25 @@
+From f0edcb1ad53ddd906eb63aa26b43ad73d3a79f30 Mon Sep 17 00:00:00 2001
+From: "Lori A. Burns" <lori.burns7@gmail.com>
+Date: Wed, 5 Aug 2026 18:28:14 -0400
+Subject: [PATCH 1/1] loosen exact libxc detection
+
+---
+ cmake/ExchCXXConfig.cmake.in | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/cmake/ExchCXXConfig.cmake.in b/cmake/ExchCXXConfig.cmake.in
+index 8897548..5817abf 100644
+--- a/cmake/ExchCXXConfig.cmake.in
++++ b/cmake/ExchCXXConfig.cmake.in
+@@ -13,7 +13,7 @@ set( EXCHCXX_ENABLE_DEVICE @EXCHCXX_ENABLE_DEVICE@ )
+ set( EXCHCXX_ENABLE_LIBXC  @EXCHCXX_ENABLE_LIBXC@  )
+ 
+ if( EXCHCXX_ENABLE_LIBXC )
+-  find_dependency( Libxc @Libxc_VERSION@ EXACT CONFIG )
++  find_dependency( Libxc @Libxc_VERSION@...<7.2 CONFIG )
+ endif()
+ 
+ if( EXCHCXX_ENABLE_CUDA )
+-- 
+2.40.1
+
