@@ -13,7 +13,7 @@ source:
     - 0001-loosen-exact-libxc-detection.patch
 
 build:
-  number: 5
+  number: 6
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage(name, max_pin='x.x') }} cuda{{ cuda_compiler_version | replace('.', '') }}_*  # [cuda_compiler_version != "None"]
@@ -34,7 +34,6 @@ requirements:
     - cuda-version {{ cuda_compiler_version }}  # [cuda_compiler_version != "None"]
     - cuda-cudart-dev                           # [cuda_compiler_version != "None"]
   run:
-    - cuda-cudart  # [cuda_compiler_version != "None"]
     - __cuda       # [cuda_compiler_version != "None"]
     - {{ pin_compatible('libxc-c', max_pin='x.x') }}
 
